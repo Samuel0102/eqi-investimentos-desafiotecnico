@@ -12,10 +12,15 @@ main {
 
 #simulator {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
 }
 
 #simulator-result {
+  display: block;
+}
+
+#simulator-form {
   display: none;
 }
 
@@ -48,7 +53,6 @@ span {
 .form-radio {
   padding: 16px 0;
   position: relative;
-  width: 100%;
 }
 
 .form-field input {
@@ -158,4 +162,26 @@ input[type="radio"]:checked {
 
 #buttons input:active {
   background: #ed8e53;
+}
+
+/* -> SIMULATOR RESULT <- */
+.info{
+  text-align: center;
+  
+}
+
+.info span{
+  font-size: 1.4rem;
+  margin: 16px 0;
+  padding: 16px 0;
+  box-shadow: 0px 2px 16px grey;
+}
+
+#investiment-info{
+  display: flex;
+  row-gap: 64px;
+  column-gap: 64px;
+  justify-content: space-between;
+  align-content: center;
+  flex-wrap: wrap;
 }
