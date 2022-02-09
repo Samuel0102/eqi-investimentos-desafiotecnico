@@ -1,18 +1,3 @@
-@media (max-width: 575px) {
-    #simulator-form{
-        text-align: center;
-    }
-
-    h2{
-        text-align: center;
-    }
-
-    #buttons {
-        justify-content: center;
-    }
-
-}
-
 @media (min-width: 576px) {
     form .column:nth-child(2) {
         margin-right: 80px;
@@ -24,6 +9,21 @@
 
     #buttons {
         justify-content: space-between;
+    }
+
+    #graph-column{
+        display: block;
+    }
+
+    #graph-bar{
+        display: none;
+    }
+
+}
+
+@media (min-width: 768px) {
+    #simulator{
+        justify-content: space-around;
     }
 }
 
