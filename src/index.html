@@ -30,8 +30,20 @@
               <span>Rendimento</span>
 
               <div class="radios">
-                <input type="radio" name="yield" id="brute" value="brute" />
-                <input type="radio" name="yield" id="liquid" value="liquid" />
+                <input
+                  type="radio"
+                  name="yield"
+                  id="brute"
+                  value="brute"
+                  required
+                />
+                <input
+                  type="radio"
+                  name="yield"
+                  id="liquid"
+                  value="liquid"
+                  required
+                />
               </div>
             </div>
             <div class="form-field">
@@ -60,9 +72,27 @@
             <div class="form-radio">
               <span>Tipos de Indexação</span>
               <div class="radios">
-                <input type="radio" id="pre" name="indexing" value="pre" />
-                <input type="radio" id="pos" name="indexing" value="pos" />
-                <input type="radio" id="fixed" name="indexing" value="fixed" />
+                <input
+                  type="radio"
+                  id="pre"
+                  name="indexing"
+                  value="pre"
+                  required
+                />
+                <input
+                  type="radio"
+                  id="pos"
+                  name="indexing"
+                  value="pos"
+                  required
+                />
+                <input
+                  type="radio"
+                  id="fixed"
+                  name="indexing"
+                  value="fixed"
+                  required
+                />
               </div>
             </div>
             <div class="form-field">
@@ -131,16 +161,21 @@
               <h3>Ganho Líquido</h3>
               <span>R$ 47.000,00</span>
             </div>
-            
           </article>
-          <article id="graph-bar"></article>
-          <article id="graph-column"></article>
+
+          <article id="graphs">
+            <h3>Projeção de Valores</h3>
+            <article id="graph-bar"></article>
+            <article id="graph-column"></article>
+          </article>
         </div>
       </section>
     </main>
 
-    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script
+      type="text/javascript"
+      src="https://www.gstatic.com/charts/loader.js"
+    ></script>
     <script src="script.js"></script>
-  
   </body>
 </html>

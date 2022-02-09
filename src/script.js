@@ -1,8 +1,9 @@
-document.getElementById('simulator-form').addEventListener('click', (e) => {
+document.getElementById('simulator-form').addEventListener('submit', (e) => {
     e.preventDefault();
-    fetchApi();
+    drawChart();
+});
 
-})
+window.addEventListener('resize', drawChart);
 
 google.charts.load("current", { packages: ["corechart"] });
 
@@ -14,6 +15,7 @@ const fetchApi = () => {
     .then(result => {
       const {semAporte, comAporte} = result[0].graficoValores;
       formatApiReturn([semAporte, comAporte]);
+      console.log('a')
     })
 }
 
@@ -24,11 +26,16 @@ function formatApiReturn(values){
     graphValues.push([i, values[0][i], values[1][i]]);
   }
 
-  drawChart(graphValues);
+  localStorage.setItem('graphValues', JSON.stringify(graphValues));
+
+  drawChart();
 }
 
-function drawChart(values) {
-  let data = new google.visualization.arrayToDataTable(values);
+function drawChart() {
+  if(!localStorage['graphValues']) fetchApi();
+
+  const values = localStorage.getItem('graphValues');
+  let data = new google.visualization.arrayToDataTable(JSON.parse(values));
 
   // Set chart options
   var optionsCol = {

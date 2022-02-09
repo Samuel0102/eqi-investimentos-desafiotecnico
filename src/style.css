@@ -17,14 +17,6 @@ main {
   text-align: center;
 }
 
-#simulator-result {
-  display: block;
-}
-
-#simulator-form {
-  display: block;
-}
-
 /* -> HEADER STYLES <- */
 h1 {
   text-align: center;
@@ -35,6 +27,11 @@ h2 {
   margin: 8px 0;
   display: block;
 }
+
+h3{
+  font-size: .9rem;
+}
+
 
 /* -> FORM COLUMNS <- */
 form .column {
@@ -159,14 +156,15 @@ input[type="radio"]:checked {
 }
 
 #buttons input {
-  padding: 10px 0;
+  padding: 16px 0;
   border-radius: 8px;
   font-size: 0.9rem;
   font-weight: bold;
   width: 190px;
 }
 
-#buttons input:active {
+#submit-btn{
+  border: none;
   background: #ed8e53;
 }
 
@@ -174,10 +172,6 @@ input[type="radio"]:checked {
 .info{
   text-align: center;  
   width: 144px;
-}
-
-.info h3{
-  font-size: .9rem;
 }
 
 .info span{

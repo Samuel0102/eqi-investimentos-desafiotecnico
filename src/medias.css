@@ -1,6 +1,6 @@
 @media (min-width: 576px) {
     form .column:nth-child(2) {
-        margin-right: 80px;
+        margin-right: 32px;
     }
 
     h2{
@@ -21,14 +21,45 @@
 
 }
 
-@media (min-width: 768px) {
-    #simulator{
-        justify-content: space-around;
-    }
-}
-
-@media (min-width: 1024px){
+@media (min-width: 1024px){ 
     h2{
         text-align: left;
+    }        
+
+    #simulator{
+        justify-content: space-between;
+        text-align: left;
+    }
+
+    #simulator-result{
+        width: 50%;
+        margin: 0 auto;
+    }
+
+}
+
+@media (min-width: 1270px) {
+    .info{
+        width: 176px;
+    }
+
+    .info span{
+        font-size: .9rem;
+    }
+
+    h3{
+        font-size: 1rem;
+    }
+
+    #investiment-info{
+        column-gap: 32px;
+    }
+
+    #simulator-result{
+        margin: 0;
+    }
+
+    #simulator{
+        justify-content: space-around;
     }
 }
