@@ -1,0 +1,34 @@
+@media (max-width: 575px) {
+    #simulator-form{
+        text-align: center;
+    }
+
+    h2{
+        text-align: center;
+    }
+
+    #buttons {
+        justify-content: center;
+    }
+
+}
+
+@media (min-width: 576px) {
+    form .column:nth-child(2) {
+        margin-right: 80px;
+    }
+
+    h2{
+        text-align: center;
+    }
+
+    #buttons {
+        justify-content: space-between;
+    }
+}
+
+@media (min-width: 1024px){
+    h2{
+        text-align: left;
+    }
+}

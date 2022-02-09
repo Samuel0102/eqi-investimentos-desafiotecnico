@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Plataforma calculadora de investimento, com base em aporte, tempo, renda e indexação!"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="medias.css" />
+    <title>EQI Investimentos - Simulação de Investimento</title>
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+      integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <main>
+      <h1>Simulador de Investimentos</h1>
+
+      <section id="simulator">
+        <form id="simulator-form">
+          <h2>Simulador</h2>
+          <article class="column">
+            <div class="form-radio">
+              <span>Rendimento</span>
+
+              <div class="radios">
+                <input type="radio" name="yield" id="brute" value="brute" />
+                <input type="radio" name="yield" id="liquid" value="liquid" />
+              </div>
+            </div>
+            <div class="form-field">
+              <input
+                type="text"
+                name="initial-value"
+                id="initial-value"
+                required
+              />
+              <span class="invalid"></span>
+              <label for="initial-value">Aporte Inicial</label>
+            </div>
+            <div class="form-field">
+              <input type="text" name="deadline" id="deadline" required />
+              <span class="invalid"></span>
+              <label for="deadline">Prazo (em meses)</label>
+            </div>
+            <div class="form-field">
+              <input type="text" name="ipca" id="ipca" required />
+              <span class="invalid"></span>
+              <label for="ipca">IPCA (ao ano)</label>
+            </div>
+          </article>
+
+          <article class="column">
+            <div class="form-radio">
+              <span>Tipos de Indexação</span>
+              <div class="radios">
+                <input type="radio" id="pre" name="indexing" value="pre" />
+                <input type="radio" id="pos" name="indexing" value="pos" />
+                <input type="radio" id="fixed" name="indexing" value="fixed" />
+              </div>
+            </div>
+            <div class="form-field">
+              <input type="text" id="month-value" name="month-value" required />
+              <span class="invalid"></span>
+              <label for="month-value">Aporte Mensal</label>
+            </div>
+            <div class="form-field">
+              <input type="text" id="rentability" name="rentability" required />
+              <span class="invalid"></span>
+              <label for="rentability">Rentabilidade</label>
+            </div>
+            <div class="form-field">
+              <input type="text" id="cdi" name="cdi" required />
+              <span class="invalid"></span>
+              <label for="cdi">CDI (ao ano)</label>
+            </div>
+          </article>
+
+          <article id="buttons">
+            <input
+              type="reset"
+              name="reset-btn"
+              id="reset-btn"
+              value="Limpar Campos"
+            />
+            <input
+              type="submit"
+              name="submit-btn"
+              id="submit-btn"
+              value="Simular"
+            />
+          </article>
+        </form>
+
+        <div id="simulator-result">
+          <h2>Resultado da Simulação</h2>
+
+          <article id="investiment-info">
+            <div class="info">
+              <h3>Valor final Bruto</h3>
+              <span>R$ 15.409,27</span>
+            </div>
+
+            <div class="info">
+              <h3>Alíquota do IR</h3>
+              <span>20%</span>
+            </div>
+
+            <div class="info">
+              <h3>Valor Pago em IR</h3>
+              <span>R$ 1.509,27</span>
+            </div>
+
+            <div class="info">
+              <h3>Valor Final Líquido</h3>
+              <span>R$ 56.409,27</span>
+            </div>
+
+            <div class="info">
+              <h3>Valor Total Investido</h3>
+              <span>R$ 9.509,27</span>
+            </div>
+
+            <div class="info">
+              <h3>Ganho Líquido</h3>
+              <span>R$ 47.000,00</span>
+            </div>
+            
+          </article>
+          <article id="graphic"></article>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
