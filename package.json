@@ -1,0 +1,27 @@
+{
+  "name": "eqi-investimentos",
+  "version": "1.0.0",
+  "description": "Desafio Técnico proposto como parte do processo seletivo para vaga de Desenvolvedor Front-End anunciada pela empresa EQI Investimentos.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Samuel0102/eqinvestimentos-desafiotecnico.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Samuel0102/eqinvestimentos-desafiotecnico/issues"
+  },
+  "homepage": "https://github.com/Samuel0102/eqinvestimentos-desafiotecnico#readme",
+  "devDependencies": {
+    "gulp": "^4.0.2",
+    "gulp-concat": "^2.6.1",
+    "gulp-htmlmin": "^5.0.1",
+    "gulp-terser": "^2.1.0",
+    "gulp-uglifycss": "^1.1.0"
+  }
+}
