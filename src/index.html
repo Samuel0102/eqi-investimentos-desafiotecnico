@@ -25,38 +25,49 @@
               <div class="radios">
                 <input
                   type="radio"
+                  checked
                   name="yield"
                   id="brute"
-                  value="brute"
+                  value="bruto"
                   required
                 />
                 <input
                   type="radio"
                   name="yield"
                   id="liquid"
-                  value="liquid"
+                  value="liquido"
                   required
                 />
               </div>
             </div>
-            <div class="form-field">
+            <div class="form-field currency">
               <input
-                type="text"
+                type="number"
                 name="initial-value"
+                step="any"
+                autocomplete="off"
+                min="0"
+                class="form"
                 id="initial-value"
                 required
               />
-              <span class="invalid"></span>
+              <span class="error"></span>
+              <span class="prefix">R$</span>
               <label for="initial-value">Aporte Inicial</label>
             </div>
             <div class="form-field">
-              <input type="text" name="deadline" id="deadline" required />
-              <span class="invalid"></span>
+              <input
+                type="number"
+                name="deadline"
+                id="deadline"
+                class="form"
+                required
+              />
+              <span class="error"></span>
               <label for="deadline">Prazo (em meses)</label>
             </div>
             <div class="form-field">
-              <input type="text" name="ipca" id="ipca" required />
-              <span class="invalid"></span>
+              <input type="text" name="ipca" id="ipca" readonly />
               <label for="ipca">IPCA (ao ano)</label>
             </div>
           </article>
@@ -70,6 +81,7 @@
                   id="pre"
                   name="indexing"
                   value="pre"
+                  checked
                   required
                 />
                 <input
@@ -83,24 +95,41 @@
                   type="radio"
                   id="fixed"
                   name="indexing"
-                  value="fixed"
+                  value="ipca"
                   required
                 />
               </div>
             </div>
-            <div class="form-field">
-              <input type="text" id="month-value" name="month-value" required />
-              <span class="invalid"></span>
+            <div class="form-field currency">
+              <input
+                type="number"
+                min="0"
+                step="any"
+                autocomplete="off"
+                id="month-value"
+                class="form"
+                name="month-value"
+                required
+              />
+              <span class="error"></span>
+              <span class="prefix">R$</span>
               <label for="month-value">Aporte Mensal</label>
             </div>
             <div class="form-field">
-              <input type="text" id="rentability" name="rentability" required />
-              <span class="invalid"></span>
+              <input
+                type="text"
+                id="rentability"
+                min="0"
+                step="any"
+                class="form"
+                name="rentability"
+                required
+              />
+              <span class="error"></span>
               <label for="rentability">Rentabilidade</label>
             </div>
             <div class="form-field">
-              <input type="text" id="cdi" name="cdi" required />
-              <span class="invalid"></span>
+              <input id="cdi" name="cdi" readonly />
               <label for="cdi">CDI (ao ano)</label>
             </div>
           </article>
