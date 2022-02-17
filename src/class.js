@@ -23,13 +23,13 @@ class Form {
   }
 
   validateForm() {
-    let errorCounter = 0;
+    let errorCounter = 0; 
 
     for (let element of this.inputs) {
       element.classList.remove("invalid-input");
       element.nextElementSibling.innerText = "";
-
-      if (!parseFloat(element.value)) {
+      
+      if (isNaN(element.value)) {
         element.classList.add("invalid-input");
         element.nextElementSibling.innerText =
           "Valor inválido! Apenas números!";
@@ -37,12 +37,13 @@ class Form {
       }
     }
 
+    console.log(errorCounter)
     this.isValid = errorCounter > 0 ? false : true;
   }
 
   getFormData() {
     this.validateForm();
-    
+
     const radiosIndexing = document.getElementsByName("indexing");
     const radiosYield = document.getElementsByName("yield");
     this.formData = [["tipoRendimento", "tipoIndexacao"]];
@@ -67,23 +68,29 @@ class Form {
   }
 
   setDefaultFields(data) {
-    for (let field of JSON.parse(data)) {
+    for (let field of data) {
       document.getElementById(field[0]).defaultValue = field[1] + "%";
     }
   }
 }
 
 class DataFormatter {
-  formatSimulationData(data) {
-    data.then((result) => {
-      let simulations = [["Meses", "Sem Aporte", "Com Aporte"]];
+  constructor() {
+    this.form = new Form();
+    this.chart = new Chart();
+    this.view = new View();
+  }
+
+  formatGraphData(data) {
+    return data.then((result) => {
+      let graphData = [["Meses", "Sem Aporte", "Com Aporte"]];
       const { semAporte, comAporte } = result[0].graficoValores;
 
       for (let i in comAporte) {
-        simulations.push([i, semAporte[i], comAporte[i]]);
+        graphData.push([i, semAporte[i], comAporte[i]]);
       }
 
-      localStorage.setItem("simulations", JSON.stringify(simulations));
+      this.chart.drawChart(graphData);
     });
   }
 
@@ -94,7 +101,31 @@ class DataFormatter {
         indicators.push([result[i]["nome"], result[i]["valor"]]);
       }
 
-      localStorage.setItem("indicators", JSON.stringify(indicators));
+      this.form.setDefaultFields(indicators);
+    });
+  }
+
+  formatSimulationInfoData(data) {
+    data.then((result) => {
+      const {
+        valorFinalBruto,
+        aliquotaIR,
+        valorPagoIR,
+        valorTotalInvestido,
+        valorFinalLiquido,
+        ganhoLiquido,
+      } = result[0];
+
+      let info = [
+        "R$ " + valorFinalBruto,
+        aliquotaIR + " %",
+        "R$ " + valorPagoIR,
+        "R$ " + valorFinalLiquido,
+        "R$ " + valorTotalInvestido,
+        "R$ " + ganhoLiquido,
+      ];
+
+      this.view.setHTML(info);
     });
   }
 }
@@ -105,10 +136,8 @@ class Chart {
     this.chartData = {};
   }
 
-  setChartData() {
-    this.chartData = new google.visualization.arrayToDataTable(
-      JSON.parse(localStorage["simulations"])
-    );
+  setChartData(data) {
+    this.chartData = google.visualization.arrayToDataTable(data);
   }
 
   setChartOptions() {
@@ -149,8 +178,8 @@ class Chart {
     this.chartOptions = [optionsBar, optionsCol];
   }
 
-  drawChart() {
-    this.setChartData();
+  drawChart(data) {
+    this.setChartData(data);
     this.setChartOptions();
 
     // Instantiate and draw our chart, passing in some options.
@@ -167,19 +196,43 @@ class Chart {
   }
 }
 
+class View {
+  setHTML(data) {
+    const infoHTML = document.querySelectorAll(".info > span");
+
+    for (const [index, element] of infoHTML.entries()) {
+      element.innerText = data[index];
+    }
+  }
+}
+
 class Controller {
   constructor() {
-    this.requisition = Requisition();
-    this.form = Form();
-    this.dataFormatter = DataFormatter();
-    this.chart = Chart();
+    this.requisition = new Requisition();
+    this.form = new Form();
+    this.dataFormatter = new DataFormatter();
+    this.chart = new Chart();
+    this.view = new View();
   }
 
-  validateForm() {}
+  getFormData() {
+    return this.form.getFormData();
+  }
 
-  makeRequisition(endpoint = "/indicadores", parameters) {}
+  setIndicators(endpoint = "/indicadores", parameters = "") {
+    const response = this.requisition.makeRequisition(endpoint, parameters);
+    this.dataFormatter.formatIndicatorsData(response);
+  }
 
-  formatData(data) {}
+  setSimulations() {
+    const formData = this.getFormData();
+    const parameters = `?tipoRendimento=${formData[1][0]}&tipoIndexacao=${formData[1][1]}`;
+    const response = this.requisition.makeRequisition(
+      "/simulacoes",
+      parameters
+    );
 
-  drawChart() {}
+    this.dataFormatter.formatGraphData(response);
+    this.dataFormatter.formatSimulationInfoData(response);
+  }
 }
