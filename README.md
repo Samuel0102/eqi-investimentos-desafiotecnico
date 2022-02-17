@@ -1,6 +1,5 @@
 # :money_with_wings: Desafio técnico - EQInvestimentos :money_with_wings:
 Desafio técnico especificado no processo seletivo para vaga de Desenvolvedor Front-End na empresa EQInvestimentos
-:link: https://elegant-visvesvaraya-e1c7df.netlify.app/#/
 
 # Sobre o projeto
 
