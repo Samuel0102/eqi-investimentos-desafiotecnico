@@ -18,6 +18,9 @@ Como parte do seu processo seletivo, a empresa EQInvestimentos solicitou aos can
 *IDE/Editor de Código*: Visual Studio Code.      
 *Estruturação*: Estruturado em HTML e seu código JS usando o paradigma da Programação Orientada a Objetos(POO).
 
+## Screenshot
+<a href="https://imgbox.com/zX4yPqAf" target="_blank"><img src="https://images2.imgbox.com/f3/3c/zX4yPqAf_o.png" alt="image host"/></a>
+
 ## Funcionalidades
 | Funcionalidade | Situação |
 | ----------- | ----------- |
@@ -34,6 +37,7 @@ Como parte do seu processo seletivo, a empresa EQInvestimentos solicitou aos can
 
 ## Execução do sistema
 * Para executar o sistema, basta abrir em qualquer navegador o arquivo index.html disponível no diretório de distribuição <strong>/dist</strong>.
+* NOTA: para execução é necessário também executar a api-fake localizada no diretório <strong>/api</strong> através do comando `npx json-server db.json` em um terminal(necessário NODEJS instalado na máquina!). Após a API estiver rodando, seguir o passo acima!
 
 ## Documentações do sistema e outros arquivos
 Nenhum arquivo/documentação extra
