@@ -28,16 +28,23 @@ class Form {
     for (let element of this.inputs) {
       element.classList.remove("invalid-input");
       element.nextElementSibling.innerText = "";
-      
+
       if (isNaN(element.value)) {
         element.classList.add("invalid-input");
         element.nextElementSibling.innerText =
           "Valor inválido! Apenas números!";
         errorCounter++;
       }
+
+      if (element.value === "" || element.value === " "){
+        element.classList.add("invalid-input");
+        element.nextElementSibling.innerText =
+          "O campo não pode ser vazio!";
+        errorCounter++;
+      }
+
     }
 
-    console.log(errorCounter)
     this.isValid = errorCounter > 0 ? false : true;
   }
 
@@ -125,7 +132,7 @@ class DataFormatter {
         "R$ " + ganhoLiquido,
       ];
 
-      this.view.setHTML(info);
+      this.view.setSimulationInfoHTML(info);
     });
   }
 }
@@ -197,7 +204,7 @@ class Chart {
 }
 
 class View {
-  setHTML(data) {
+  setSimulationInfoHTML(data) {
     const infoHTML = document.querySelectorAll(".info > span");
 
     for (const [index, element] of infoHTML.entries()) {
@@ -224,7 +231,7 @@ class Controller {
     this.dataFormatter.formatIndicatorsData(response);
   }
 
-  setSimulations() {
+  setSimulation() {
     const formData = this.getFormData();
     const parameters = `?tipoRendimento=${formData[1][0]}&tipoIndexacao=${formData[1][1]}`;
     const response = this.requisition.makeRequisition(
