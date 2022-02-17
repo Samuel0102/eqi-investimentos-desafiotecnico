@@ -134,12 +134,13 @@ span {
 
 .input-info span:hover ~ p{
   opacity: 100%;
+  z-index: 10;
 }
 
 .input-info p{
   border: 1px solid gray;
   position: absolute;
-  z-index: 10;
+  z-index: -1;
   width: 200px;
   margin-top: 5px;
   font-size: 10px;
